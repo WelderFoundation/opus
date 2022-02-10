@@ -38,6 +38,15 @@
 extern "C" {
 #endif
 
+//+WELDER
+// Emscripten doesn't have intrinsics.
+#ifdef EMSCRIPTEN
+#ifdef USE_SIMD
+#undef USE_SIMD
+#endif
+#endif
+//-WELDER
+
 #ifdef USE_SIMD
 # include <xmmintrin.h>
 # define kiss_fft_scalar __m128
